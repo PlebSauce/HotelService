@@ -29,15 +29,21 @@ export class AppComponent implements OnInit{
   currentCheckOutVal!:string;
 
     messages: string[] = [];
+    timezones: string[] = [];
 
     getWelcomeMessage():Observable<string[]>{
       return this.httpClient.get<string[]>(this.baseURL + "/api/welcome"/*, {responseType: 'json'}*/);
     }
+    getTimeZones():Observable<string[]>{
+      return this.httpClient.get<string[]>(this.baseURL + "/api/timezone")
+    }
 
     ngOnInit() {
       this.getWelcomeMessage().subscribe((data) => {
-        //console.log("Typescript data: " + data + "" + this.messages);
         this.messages = data;
+      });
+      this.getTimeZones().subscribe((data) => {
+        this.timezones = data;
       });
       this.roomsearch = new FormGroup({
         checkin: new FormControl(' '),

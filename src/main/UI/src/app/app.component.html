@@ -14,6 +14,11 @@
        style="display: block; top: auto; left: auto; bottom: auto; right: auto; position: relative; margin: 0 auto auto; box-sizing: content-box; width: 100%; min-height: 44px; height: auto; padding-top: 0; padding-bottom: 0;">
     <nav id="nav" style="position: relative; top: 0; left: 0; bottom: auto; right: auto; width: 100%;">
       <div class="navbar">
+        <ul *ngIf = messages>
+          <li *ngFor = "let message of messages">
+            {{message}}
+          </li>
+        </ul>
         <div class="brand"><a href="/#welcome">Landon <span>Hotel</span></a></div>
       </div><!-- navbar -->
     </nav>
@@ -22,11 +27,13 @@
 <main id="wrapper">
   <div class="scene" id="welcome">
     <article class="content">
-      <ul *ngIf = messages>
-        <li *ngFor = "let message of messages">
-          {{message}}
-        </li>
+      <ul *ngIf = "timezones">
+        <li>An online presentation will be held
+          on November 8, 2023 at: </li>
+        <li *ngFor="let timezone of timezones">
+          {{timezone}}</li>
       </ul>
+
       <div class="row">
         <div class=""col-12>
           <div class="gallery">
